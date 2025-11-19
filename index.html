@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chithi+</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 1. Add Babel to translate TSX for the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="importmap">
 {
   "imports": {
@@ -23,6 +25,7 @@
 </head>
 <body class="bg-gray-900 text-white">
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <!-- 2. Change script type to "text/babel" to tell Babel to translate it -->
+    <script type="text/babel" data-type="module" src="/index.tsx"></script>
 </body>
 </html>
