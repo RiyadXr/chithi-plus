@@ -16,7 +16,6 @@ const io = new Server(server, {
 });
 
 const rooms = {}; // In-memory store for chat rooms
-const BOT_USER = { id: 'chithi-plus-bot', name: 'Chithi+ Bot', isBot: true };
 
 io.on('connection', (socket) => {
   console.log(`User connected: ${socket.id}`);
@@ -33,12 +32,7 @@ io.on('connection', (socket) => {
     if (!rooms[pin]) {
       rooms[pin] = {
         users: [],
-        messages: [{
-          id: crypto.randomUUID(),
-          text: `Welcome! Room ${pin} is now active. Share the PIN to invite others.`,
-          sender: BOT_USER,
-          timestamp: Date.now()
-        }]
+        messages: []
       };
     }
 

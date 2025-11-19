@@ -1,6 +1,6 @@
 import React from 'react';
 import { Message } from '../types';
-import { BotIcon, UserIcon } from './icons';
+import { UserIcon } from './icons';
 
 interface MessageBubbleProps {
   message: Message;
@@ -13,18 +13,11 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message, isOwnMessage }) 
   const { sender, text, timestamp } = message;
 
   const alignment = isOwnMessage ? 'items-end' : 'items-start';
-  const bubbleColor = isOwnMessage ? 'bg-cyan-600' : sender.isBot ? 'bg-gray-700' : 'bg-gray-600';
+  const bubbleColor = isOwnMessage ? 'bg-cyan-600' : 'bg-gray-600';
   const bubbleShape = isOwnMessage ? 'rounded-t-xl rounded-bl-xl' : 'rounded-t-xl rounded-br-xl';
   const time = new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   const Avatar = () => {
-    if (sender.isBot) {
-      return (
-        <div className="flex-shrink-0 h-10 w-10 rounded-full bg-cyan-500 flex items-center justify-center">
-          <BotIcon className="h-6 w-6 text-white" />
-        </div>
-      )
-    }
     if(isOwnMessage) return null;
     return (
        <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-600 flex items-center justify-center">
